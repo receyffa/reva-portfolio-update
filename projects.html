@@ -1,0 +1,168 @@
+<?php $host = "localhost"; $user = "root"; $password = ""; $database =
+"portfolio_db"; $conn = mysqli_connect($host, $user, $password, $database); if
+(!$conn) { die("Koneksi database gagal: " . mysqli_connect_error()); } ?>
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Projects | teknik imut</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS portofolio -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Navigasi utama">
+        <a class="logo" href="index.php"> hiii<span>haloo</span><b>.</b> </a>
+
+        <ul class="nav-links">
+          <li><a href="index.php">Home</a></li>
+          <li><a href="about.php">About</a></li>
+          <li><a class="active" href="projects.php">Projects</a></li>
+          <li>
+            <a class="nav-cta" href="contact.php"> Contact <span>↗</span> </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- KONTEN UTAMA -->
+    <main class="container page-main">
+      <!-- JUDUL -->
+      <section class="page-hero">
+        <p class="eyebrow">SELECTED WORKS</p>
+        <h1>My Projects <span class="pink-text">.</span></h1>
+        <p>
+          Beberapa project yang saya kerjakan selama proses belajar dan
+          eksplorasi.
+        </p>
+      </section>
+
+      <!-- DAFTAR PROYEK -->
+      <section class="project-grid" aria-label="Daftar proyek">
+        <!-- PROJECT 1 -->
+        <article class="project-card">
+          <div class="project-cover cover-pink">
+            <span class="cover-number">01</span>
+            <img
+              src="assets/ctrl snap.jpeg"
+              alt="Ctrl Snap Photobooth"
+              class="project-image"
+            />
+          </div>
+
+          <div class="project-info">
+            <p class="card-label">CREATIVE WEBSITE</p>
+            <h2>Ctrl Snap Photobooth</h2>
+            <p>
+              Konsep website photobooth dengan fitur filter foto, frame, timer,
+              stiker, teks, dan penyimpanan foto.
+            </p>
+
+            <div class="project-meta">
+              <span>HTML</span>
+              <span>CSS</span>
+              <a href="contact.php">Ask about it ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 2 -->
+        <article class="project-card">
+          <div class="project-cover cover-green">
+            <span class="cover-number">02</span>
+            <img
+              src="assets/badminton.jpeg"
+              alt="Badminton Tournament"
+              class="project-image"
+            />
+          </div>
+
+          <div class="project-info">
+            <p class="card-label">SPORTS INFORMATION</p>
+            <h2>Badminton Tournament</h2>
+            <p>
+              Website informasi turnamen badminton yang menampilkan data tim,
+              pemain, jadwal pertandingan, dan event.
+            </p>
+
+            <div class="project-meta">
+              <span>HTML</span>
+              <span>CSS</span>
+              <a href="contact.php">Ask about it ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 3 -->
+        <article class="project-card">
+          <div class="project-cover cover-lilac">
+            <span class="cover-number">03</span>
+            <img
+              src="assets/my porto.jpeg"
+              alt="My Digital Space Portfolio"
+              class="project-image"
+            />
+          </div>
+
+          <div class="project-info">
+            <p class="card-label">PERSONAL WEBSITE</p>
+            <h2>My Digital Space</h2>
+            <p>
+              Website personal untuk menampilkan profil, minat, dan project yang
+              dibuat selama proses belajar.
+            </p>
+
+            <div class="project-meta">
+              <span>HTML</span>
+              <span>CSS</span>
+              <a href="index.php">View website ↗</a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- CATATAN PROYEK -->
+      <section class="project-note">
+        <span class="note-icon"></span>
+
+        <div>
+          <h2>Little things <span class="pink-text">I've created.</span></h2>
+          <p>
+            Setiap project punya cerita dan proses belajarnya sendiri. Di sini
+            aku berbagi hasil eksplorasi, ide kreatif, dan hal-hal baru yang aku
+            pelajari selama ngoding.
+          </p>
+        </div>
+
+        <a class="button button-primary" href="contact.php">
+          Let's connect ↗
+        </a>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="logo" href="index.php"> my<span>space</span><b>.</b> </a>
+
+        <p>Personal Portfolio <span>-</span> © 2026 Reva</p>
+
+        <a href="contact.php">Say hello ↗</a>
+      </div>
+    </footer>
+
+    <!-- Bootstrap 5 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

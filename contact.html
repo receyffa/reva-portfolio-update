@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Contact | teknik imut</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS portofolio -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Navigasi utama">
+        <a class="logo" href="index.html"> hii<span>hallo</span><b>.</b> </a>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li>
+            <a class="nav-cta active-cta" href="contact.html">
+              Contact <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- KONTEN UTAMA -->
+    <main class="container page-main">
+      <section class="page-hero">
+        <p class="eyebrow">YOUR TURN TO SAY HI</p>
+
+        <h1>Let's make something <span class="pink-text">good.</span></h1>
+
+        <p>
+          Punya pertanyaan, ide, atau mau ngobrol soal project? Kirim pesan
+          lewat form ini.
+        </p>
+      </section>
+
+      <!-- KONTAK -->
+      <section class="contact-layout">
+        <aside class="contact-aside">
+          <div class="contact-bubble">hii</div>
+
+          <p class="eyebrow">Have a little idea?</p>
+
+          <h2>
+            Let's make it happen!<br />
+            <span class="green-text">Let's talk!</span>
+          </h2>
+
+          <p>
+            Punya ide menarik, mau ngobrol, atau sekadar mampir? Feel free to
+            say hi. Siapa tahu obrolan kecil bisa jadi sesuatu yang seru.
+          </p>
+
+          <div class="contact-detail">
+            <span>✿</span>
+            <div>
+              <strong>Based on curiosity</strong>
+              <small>Always learning, always growing.</small>
+            </div>
+          </div>
+
+          <a class="text-link" href="projects.html">
+            Explore my projects <span>→</span>
+          </a>
+        </aside>
+
+        <!-- FORM KONTAK -->
+        <form class="contact-form" id="contactForm">
+          <h2>Send a message <span>♡</span></h2>
+
+          <p class="form-subtitle">Semua kolom bertanda * wajib diisi.</p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nama">Nama *</label>
+              <input
+                type="text"
+                id="nama"
+                name="nama"
+                placeholder="Nama kamu"
+                autocomplete="name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="nama@email.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="topik">Mau ngobrol tentang?</label>
+            <select id="topik" name="topik">
+              <option value="kolaborasi">Ide kolaborasi</option>
+              <option value="project">Project website</option>
+              <option value="lainnya">Hal lainnya</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="pesan">Pesan *</label>
+            <textarea
+              id="pesan"
+              name="pesan"
+              rows="5"
+              placeholder="Tulis pesan kamu di sini..."
+              required
+            ></textarea>
+          </div>
+
+          <button class="button button-primary submit-button" type="submit">
+            Kirim pesan <span>↗</span>
+          </button>
+
+          <p
+            class="form-note"
+            id="formStatus"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </form>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="logo" href="index.html"> hii<span>haloo</span><b>.</b> </a>
+
+        <p>Personal Portfolio <span>-</span> © 2026 Reva</p>
+
+        <a href="index.html">Back to home ↑</a>
+      </div>
+    </footer>
+
+    <!-- Bootstrap 5 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Supabase JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+      // BESOK: ganti kedua nilai di bawah dengan data dari Supabase.
+      const SUPABASE_URL = "ISI_PROJECT_URL_KAMU";
+      const SUPABASE_KEY = "ISI_PUBLISHABLE_KEY_KAMU";
+
+      const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY,
+      );
+
+      const form = document.getElementById("contactForm");
+      const statusPesan = document.getElementById("formStatus");
+      const tombolKirim = form.querySelector('button[type="submit"]');
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        if (!form.reportValidity()) return;
+
+        const dataPesan = {
+          nama: document.getElementById("nama").value.trim(),
+          email: document.getElementById("email").value.trim(),
+          topik: document.getElementById("topik").value,
+          pesan: document.getElementById("pesan").value.trim(),
+        };
+
+        if (!dataPesan.nama || !dataPesan.email || !dataPesan.pesan) {
+          statusPesan.textContent = "Semua kolom wajib diisi ya.";
+          return;
+        }
+
+        tombolKirim.disabled = true;
+        statusPesan.textContent = "Sedang mengirim pesan...";
+
+        try {
+          const { error } = await supabaseClient
+            .from("contacts")
+            .insert([dataPesan]);
+
+          if (error) throw error;
+
+          statusPesan.textContent =
+            "Pesan berhasil dikirim! Makasih sudah menyapa ♡";
+
+          form.reset();
+        } catch (error) {
+          console.error("Gagal mengirim pesan:", error);
+          statusPesan.textContent =
+            "Pesan belum berhasil dikirim. Coba lagi ya.";
+        } finally {
+          tombolKirim.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>
